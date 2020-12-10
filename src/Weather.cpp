@@ -1,21 +1,21 @@
 #include <iostream>
 #include "Weather.h"
 
-//constructors
+//constructor & destructor
 Weather::Weather() {}
 Weather::Weather(int year,int month,int Date,weekDay day, string city, string country, int temp, double humidity, double windSpeed,type wtype) :
 year(year),month(month),Date(Date),day(day), city(city), country(country), temp(temp), humidity(humidity), wind_speed(windSpeed),wtype(wtype) {
 }
 Weather::~Weather() {}
 
-//getters&setters
+//getters & setters
 weekDay Weather::getDay(){
     return day;
 }
 void Weather::setDay(weekDay day) {
     Weather::day = day;
 }
-type Weather::getWtype() {
+type Weather::getWeathertype() {
     return Weather::wtype;
 }
 string Weather::getCity(){
@@ -126,6 +126,3 @@ string Weather::getDayName(){//get weekday in str from Enum type
     }
     return "noun";
 }
-
-
-

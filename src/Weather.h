@@ -16,7 +16,7 @@ public:
     weekDay getDay();
     void setDay(weekDay day);
 
-    type getWtype();
+    type getWeathertype();
 
     string getCity();
     void setCity(string city);
@@ -56,4 +56,3 @@ private:
     void write_hash(int Max);
 
 };
-

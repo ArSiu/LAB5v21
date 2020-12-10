@@ -5,22 +5,16 @@ public:
     WeatherCalendar();
     WeatherCalendar(int len);
     ~WeatherCalendar();
+    void addDayWeather(Weather weather,unsigned int Index);
+    Weather getWeatherIndex(unsigned int Index);
 
-    void findMaxTemprature(weekDay day);
-
+    void findMaxTempratureByDay(weekDay day);
     void isLvivWeather(double humidity, type Wtype);
-
-    void addDayWeather(Weather weather,unsigned int a);
-    Weather getWeatherIndex(int index);
-    void sortByDays();
-
+    void SelectionSortByDays();
+    void SelectionSortByTemperature();
+    void printAll();
 
 private:
-    Weather* array;
+    Weather* arrayOfWeatherDays;
     int len;
-
-protected:
-
 };
-
-
