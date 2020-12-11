@@ -7,11 +7,10 @@ enum type{SUNNY,CLOUD, RAINY, FOGGY};
 
 class Weather {
 
-public:
+ public:
     Weather();
-    Weather(int year,int month,int Date,weekDay day, string city, string country, int temp, double humidity, double windSpeed,type wtype);
+    Weather(int year,int month,int date,weekDay day, string city, string country, int temp, double humidity, double windSpeed,type wtype);
     ~Weather();
-
 
     weekDay getDay();
     void setDay(weekDay day);
@@ -33,17 +32,17 @@ public:
     double getWindSpeed();
     void setWindSpeed(double windSpeed);
 
-    void show_stats();
+    int getDate();
 
     string getDayName();
     string getTypeName();
 
-    int getDate();
+    void showStats();
 
-private:
+  private:
     int year;
     int month;
-    int Date;
+    int date;
     type wtype;
     weekDay day;
     string city;
@@ -52,7 +51,6 @@ private:
     double humidity;
     double wind_speed;
 
-    void write_space(int Max,int A,int L);
-    void write_hash(int Max);
-
+    void writeSpace(int maxLengthOfFieldTable,int fieldLength);
+    void writeHash(int maxLengthOfFieldTable);
 };

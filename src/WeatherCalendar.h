@@ -1,20 +1,20 @@
 #include "Weather.h"
 
 class WeatherCalendar {
-public:
+  public:
     WeatherCalendar();
     WeatherCalendar(int len);
     ~WeatherCalendar();
-    void addDayWeather(Weather weather,unsigned int Index);
-    Weather getWeatherIndex(unsigned int Index);
+    void addDayWeather(Weather weather,unsigned int index);
+    Weather getWeatherIndex(unsigned int index);
 
     void findMaxTempratureByDay(weekDay day);
-    void isLvivWeather(double humidity, type Wtype);
-    void SelectionSortByDays();
-    void SelectionSortByTemperature();
+    void isLvivWeather(double humidity, type wtype);
+    void selectionSortByDays();
+    void selectionSortByTemperature();
     void printAll();
 
-private:
+  private:
     Weather* arrayOfWeatherDays;
     int len;
 };

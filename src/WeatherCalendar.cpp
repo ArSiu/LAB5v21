@@ -1,23 +1,35 @@
 #include <iostream>
 #include "WeatherCalendar.h"
 
+
 WeatherCalendar::WeatherCalendar(){}
+
 WeatherCalendar::WeatherCalendar(int len){
     this->len=len;
     arrayOfWeatherDays = new Weather[len];
 }
+
 WeatherCalendar::~WeatherCalendar(){
     delete []arrayOfWeatherDays;
 }
 
-void WeatherCalendar::printAll(){
-    for(int i = 0;i < len;i++){
-        arrayOfWeatherDays[i].show_stats();
+void WeatherCalendar::addDayWeather(Weather weather,unsigned int index){
+    if(index < len){
+        arrayOfWeatherDays[index] = weather;
     }
 }
+
+Weather WeatherCalendar::getWeatherIndex(unsigned int index){
+    if(index < len){
+        return arrayOfWeatherDays[index];
+    }
+    return Weather();
+}
+
 void WeatherCalendar::findMaxTempratureByDay(weekDay day){
     bool hasDay;
-    int maxTemp = 0;
+    selectionSortByTemperature();
+    int maxTemp = arrayOfWeatherDays[len - 1].getTemp();
     for(int i = 0;i < len;i++){
         if(arrayOfWeatherDays[i].getDay() == day){
             hasDay = true;
@@ -42,50 +54,43 @@ void WeatherCalendar::isLvivWeather(double humidity, type wtype){
     }
 }
 
-void WeatherCalendar::addDayWeather(Weather weather,unsigned int Index){
-    if(Index < len){
-        arrayOfWeatherDays[Index] = weather;
-    }
-}
-Weather WeatherCalendar::getWeatherIndex(unsigned int Index){
-    if(Index < len){
-        return arrayOfWeatherDays[Index];
-    }
-    return Weather();
-}
-void WeatherCalendar::SelectionSortByTemperature(){
-    int i, j, First;
+
+void WeatherCalendar::selectionSortByTemperature(){
+    int tempValueForSort;
     Weather temp;
 
-    for (i = len - 1; i > 0; i--){
-        First = 0;
-        for (j=1; j<=i; j++){
-            if (arrayOfWeatherDays[j].getTemp() < arrayOfWeatherDays[First].getTemp()){
-                First = j;
+    for (int i = len - 1 ; i > 0 ; i--){
+        tempValueForSort = 0;
+        for (int j = 1; j <= i; j++){
+            if (arrayOfWeatherDays[j].getTemp() < arrayOfWeatherDays[tempValueForSort].getTemp()){
+                tempValueForSort = j;
             }
         }
-        temp = arrayOfWeatherDays[First];
-        arrayOfWeatherDays[First] = arrayOfWeatherDays[i];
+        temp = arrayOfWeatherDays[tempValueForSort];
+        arrayOfWeatherDays[tempValueForSort] = arrayOfWeatherDays[i];
         arrayOfWeatherDays[i] = temp;
     }
-
 }
 
 
-void WeatherCalendar::SelectionSortByDays(){
-    int i, j, First;
+void WeatherCalendar::selectionSortByDays(){
+    int tempValueForSort;
     Weather temp;
 
-    for (i = len - 1; i > 0; i--){
-        First = 0;
-        for (j=1; j<=i; j++){
-            if (arrayOfWeatherDays[j].getDay() < arrayOfWeatherDays[First].getDay()){
-                First = j;
+    for (int i = len - 1; i > 0 ; i--){
+        tempValueForSort = 0;
+        for (int j = 1; j <= i ; j++){
+            if (arrayOfWeatherDays[j].getDay() < arrayOfWeatherDays[tempValueForSort].getDay()){
+                tempValueForSort = j;
             }
         }
-        temp = arrayOfWeatherDays[First];
-        arrayOfWeatherDays[First] = arrayOfWeatherDays[i];
+        temp = arrayOfWeatherDays[tempValueForSort];
+        arrayOfWeatherDays[tempValueForSort] = arrayOfWeatherDays[i];
         arrayOfWeatherDays[i] = temp;
     }
-
+}
+void WeatherCalendar::printAll(){
+    for(int i = 0;i < len;i++){
+        arrayOfWeatherDays[i].showStats();
+    }
 }
