@@ -80,7 +80,7 @@ void WeatherCalendar::selectionSortByDays(){
     for (int i = len - 1; i > 0 ; i--){
         tempValueForSort = 0;
         for (int j = 1; j <= i ; j++){
-            if (arrayOfWeatherDays[j].getDay() < arrayOfWeatherDays[tempValueForSort].getDay()){
+            if (arrayOfWeatherDays[j].getDay() > arrayOfWeatherDays[tempValueForSort].getDay()){
                 tempValueForSort = j;
             }
         }
